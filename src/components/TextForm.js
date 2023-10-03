@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 
+// JSX language
 export default function TextForm(props) {
     const handleUpClick = () => {
         let newText = text.toUpperCase();
@@ -12,7 +13,7 @@ export default function TextForm(props) {
         setText(newText);
         props.showAlert("Converted to Lowercase !","success");
     }
-    const handleClick = () => {
+    const handleClear = () => {
         setText("");
         props.showAlert("Text Cleared !","success");
     }
@@ -38,6 +39,7 @@ export default function TextForm(props) {
         props.showAlert("Converted to Titlecase !","success");
     }
     }
+
     
     // It will remove extra whitespaces from the text 
     const extraSpace = () => {
@@ -45,14 +47,17 @@ export default function TextForm(props) {
         setText(newText.join(" "));
         props.showAlert("Extra Spaces Removed !","success");
     }
-
+    
+    // Jo bhi value likhenge wo textbox k andar jaega. 
     const handleOnChange = (event) => {
         setText(event.target.value);
     }
     
 
     // This is called a hook and text is a state here.
-    // Here text is the content which can be updated only using setText 
+    // Here text is the content which can be updated only using setText.
+    // By using state we can update the hook 
+    
     const [text, setText] = useState('');
 
     return (
@@ -62,12 +67,12 @@ export default function TextForm(props) {
                 <div className="my-3">
                     <textarea id="myBox" rows="10" className="form-control" value={text} onChange={handleOnChange} style={{backgroundColor: props.mode==='dark'?'#343a40':'white',color: props.mode==='dark'?'white':'black'}}></textarea>
                 </div>
-                <button className="btn btn-primary my-3 mx-1" onClick={handleUpClick}>Convert to Uppercase</button>
-                <button className="btn btn-primary my-3 mx-1" onClick={handleLoClick}>Convert to Lowercase</button>
-                <button className="btn btn-primary my-3 mx-1" onClick={titleCase}>Convert to TitleCase</button>
-                <button className="btn btn-primary my-3 mx-1" onClick={extraSpace}>Remove Extraspaces</button>
-                <button className="btn btn-primary my-3 mx-1" onClick={handleCopy}>Copy Text</button>
-                <button className="btn btn-primary my-3 mx-1" onClick={handleClick}>Clear</button>
+                <button disabled={text.length===0} className="btn btn-primary my-2 mx-1" onClick={handleLoClick}>Convert to Lowercase</button>
+                <button disabled={text.length===0} className="btn btn-primary my-2 mx-1" onClick={titleCase}>Convert to TitleCase</button>
+                <button disabled={text.length===0} className="btn btn-primary my-2 mx-1" onClick={extraSpace}>Remove Extraspaces</button>
+                <button disabled={text.length===0} className="btn btn-primary my-2 mx-1" onClick={handleUpClick}>Convert to Uppercase</button>
+                <button disabled={text.length===0} className="btn btn-primary my-2 mx-1" onClick={handleCopy}>Copy Text</button>
+                <button disabled={text.length===0} className="btn btn-primary my-2 mx-1" onClick={handleClear}>Clear</button>
             </div>
 
             <div className="container" style={{color: props.mode==='dark'?'white':'black'}}>

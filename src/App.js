@@ -10,9 +10,8 @@ import {
   Routes,
 } from "react-router-dom";
 
-
 function App() {
-  // To set dark and light mode 
+  // To set dark and light mode . 
   const [Mode, setMode] = useState('light');
   const [navtext, setNavtext] = useState('Enable Dark Mode');
   const [alert, setAlert] = useState(null);
@@ -57,4 +56,5 @@ function App() {
     </>
   );
 }
+
 export default App;

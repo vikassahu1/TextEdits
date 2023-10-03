@@ -2,9 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+
 export default function Navbar(props) {
     return (
         <>
+
             <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
                 <div className="container-fluid">
                     <Link className="navbar-brand" to="/">{props.title}</Link>
@@ -20,9 +22,9 @@ export default function Navbar(props) {
                                 <Link className="nav-link active" to="/about">{props.about}</Link>
                             </li>
                         </ul>
-                        <div className={`form-check form-switch text-${props.mode==='dark'?'light':'dark'}`}>
+                        <div className={`form-check form-switch text-${props.mode === 'dark' ? 'light' : 'dark'}`}>       
                             <label htmlFor="flexSwitchCheckDefault" className="form-check-label">{props.navtext}</label>
-                            <input type="checkbox" onClick={props.toggleMode} className="form-check-input" id="flexSwitchCheckDefault"/>
+                            <input type="checkbox" onClick={props.toggleMode} className="form-check-input" id="flexSwitchCheckDefault" />
                         </div>
                     </div>
                 </div>
